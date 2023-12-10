@@ -1,0 +1,19 @@
+﻿  Building 'kdriver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping C:\Users\Redre\Downloads\csgoCodeShit\kdriver\\buildDriver\intermediates\kdriver.inf
+  Stamping [Version] section with DriverVer=09/22/2023,16.59.57.939
+  driver.c
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\ntos.h(1140,10): warning C4273: 'ZwAllocateVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\km\ntifs.h(30254,1): message : see previous definition of 'ZwAllocateVirtualMemory'
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\ntos.h(1148,10): warning C4273: 'ZwFreeVirtualMemory': inconsistent dll linkage
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\km\ntifs.h(30289,1): message : see previous definition of 'ZwFreeVirtualMemory'
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(86,7): warning C4022: 'PsLookupProcessByProcessId': pointer mismatch for actual parameter 1
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(87,42): warning C4022: 'KeReadVirtualMemory': pointer mismatch for actual parameter 2
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(102,7): warning C4022: 'PsLookupProcessByProcessId': pointer mismatch for actual parameter 1
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(104,15): warning C4022: 'KeWriteVirtualMemory': pointer mismatch for actual parameter 3
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(69): warning C4716: 'ImageLoadCallback': must return a value
+C:\Users\Redre\Downloads\csgoCodeShit\kdriver\driver.c(173): warning C4716: 'UnloadDriver': must return a value
+  kdriver.vcxproj -> C:\Users\Redre\Downloads\csgoCodeShit\kdriver\buildDriver\kdriver.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Redre\Downloads\csgoCodeShit\kdriver\buildDriver\kdriver.sys
+  
+  Driver is 'Universal'.

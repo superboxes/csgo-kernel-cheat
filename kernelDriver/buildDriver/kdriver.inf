@@ -1,0 +1,80 @@
+;
+; kdriver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=kdriver.cat
+DriverVer = 09/22/2023,16.59.57.939
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+kdriver_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+kdriver.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%kdriver.DeviceDesc%=kdriver_Device, Root\kdriver ; TODO: edit hw-id
+
+[kdriver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+kdriver.sys
+
+;-------------- Service installation
+[kdriver_Device.NT.Services]
+AddService = kdriver,%SPSVCINST_ASSOCSERVICE%, kdriver_Service_Inst
+
+; -------------- kdriver driver install sections
+[kdriver_Service_Inst]
+DisplayName    = %kdriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\kdriver.sys
+
+;
+;--- kdriver_Device Coinstaller installation ------
+;
+
+[kdriver_Device.NT.CoInstallers]
+AddReg=kdriver_Device_CoInstaller_AddReg
+CopyFiles=kdriver_Device_CoInstaller_CopyFiles
+
+[kdriver_Device_CoInstaller_AddReg]
+;
+
+
+[kdriver_Device_CoInstaller_CopyFiles]
+;
+
+
+[kdriver_Device.NT.Wdf]
+KmdfService =  kdriver, kdriver_wdfsect
+[kdriver_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "kdriver Installation Disk"
+kdriver.DeviceDesc = "kdriver Device"
+kdriver.SVCDESC = "kdriver Service"
